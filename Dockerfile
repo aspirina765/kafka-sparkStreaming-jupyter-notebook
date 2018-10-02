@@ -49,11 +49,6 @@ RUN pip install kafka-python
 
 USER root
 
-#Install Cassandra
-ADD datastax.repo /etc/yum.repos.d/datastax.repo
-RUN yum install -y datastax-ddc
-RUN echo "/usr/lib/python2.7/site-packages" |tee /home/guest/anaconda2/lib/python2.7/site-packages/cqlshlib.pth
-
 #Environment variables for Spark and Java
 ADD setenv.sh /home/guest/setenv.sh
 RUN chown guest:guest setenv.sh
@@ -62,10 +57,6 @@ RUN echo . ./setenv.sh >> .bashrc
 #Startup (start SSH, Cassandra, Zookeeper, Kafka producer)
 ADD startup_script.sh /usr/bin/startup_script.sh
 RUN chmod +x /usr/bin/startup_script.sh
-
-#Init Cassandra 
-ADD init_cassandra.cql /home/guest/init_cassandra.cql
-RUN chown guest:guest init_cassandra.cql
 
 #Add notebooks
 ADD notebooks /home/guest/notebooks
