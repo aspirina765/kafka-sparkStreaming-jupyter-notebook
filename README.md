@@ -1,16 +1,14 @@
-# Docker container for Kafka - Spark streaming - Cassandra
+# Docker container for Kafka - Spark streaming
 
-This Dockerfile sets up a complete streaming environment for experimenting with Kafka, Spark streaming (PySpark), and Cassandra. It installs
+This Dockerfile sets up a complete streaming environment for experimenting with Kafka, Spark streaming (PySpark) and jupyter. It installs
 
 * Kafka 0.10.2.1
 * Spark 2.1.1 for Scala 2.11
-* Cassandra 3.7
 
 It additionnally installs
 
 * Anaconda distribution 4.4.0 for Python 2.7.10
 * Jupyter notebook for Python 
-
 
 # Quick start-up guide
 
@@ -52,7 +50,6 @@ where 'containerIP' is the IP of th container (127.0.0.1 on Linux). Password is 
 Once run, you are logged in as root in the container. Run the startup_script.sh (in /usr/bin) to start
 
 * SSH server. You can connect to the container using user 'guest' and password 'guest'
-* Cassandra
 * Zookeeper server
 * Kafka server
 
@@ -95,7 +92,7 @@ The container is based on CentOS 6 Linux distribution. The main steps of the bui
 
 * Install some common Linux tools (wget, unzip, tar, ssh tools, ...), and Java (1.8)
 * Create a guest user (UID important for sharing folders with host!, see below), and install Spark and sbt, Kafka, Anaconda and Jupyter notbooks for the guest user
-* Go back to root user, and install startup script (for starting SSH and Cassandra services), sentenv.sh script to set up environment variables (JAVA, Kafka, Spark, ...), spark-default.conf, and Cassandra 
+* Go back to root user, and install startup script (for starting SSH), sentenv.sh script to set up environment variables (JAVA, Kafka, Spark, ...), spark-default.conf 
 
 
 ### User UID
@@ -119,7 +116,7 @@ echo $UID
 ### Clone this repository
 
 ```
-git clone https://github.com/Yannael/kafka-sparkstreaming-cassandra
+git clone https://github.com/Yannael/kafka-sparkStreaming-jupyter-notebook
 ```
 
 ### Build
