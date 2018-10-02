@@ -1,4 +1,4 @@
-#Container for Kafka - Spark streaming - Cassandra
+#Container for Kafka - Spark streaming - Jupyter
 #IMPORTANT: If you wish to share folder between your host and this container, make sure the UID for user guest is the same as your UID
 #Check https://github.com/Yannael/brufence/blob/master/docker/streaming/README.md for details
 FROM centos:centos6
@@ -35,17 +35,24 @@ RUN mv kafka_2.11-0.10.2.1 kafka
 
 ENV PATH $HOME/spark/bin:$HOME/spark/sbin:$HOME/kafka/bin:$PATH
 
-#Install Anaconda Python distribution
-RUN wget https://repo.continuum.io/archive/Anaconda2-4.4.0-Linux-x86_64.sh
-RUN bash Anaconda2-4.4.0-Linux-x86_64.sh -b
-ENV PATH $HOME/anaconda2/bin:$PATH
-RUN conda install python=2.7.10 -y
+#Install Python3
+RUN wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh
+RUN bash Anaconda3-5.3.0-Linux-x86_64.sh -b
+ENV PATH $HOME/anaconda3/bin:$PATH
+RUN conda install python=3.6 -y
 
 #Install Jupyer notebook + Toree Scala kernel
 RUN conda install jupyter -y 
 
 #Install Kafka Python module
+RUN pip install --upgrade pip
 RUN pip install kafka-python
+
+RUN pip install findspark
+
+RUN pip install pandas
+RUN pip install pyspark
+
 
 USER root
 
@@ -62,5 +69,7 @@ RUN chmod +x /usr/bin/startup_script.sh
 ADD notebooks /home/guest/notebooks
 RUN chown -R guest:guest notebooks
 
+
+# https://github.com/awalin/kafka-sparkStreaming-jupyter-notebook
 
 

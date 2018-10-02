@@ -1,7 +1,7 @@
 #!/bin/bash
 alias notebook="jupyter notebook --ip='*'"
 
-export PATH=/home/guest/spark/bin:home/guest/spark/sbin:home/guest/anaconda2/bin:$PATH
+export PATH=/home/guest/spark/bin:home/guest/spark/sbin:home/guest/anaconda3/bin:$PATH
 export PATH=/home/guest/kafka/bin:$PATH
 
 export SPARK_HOME=/home/guest/spark
