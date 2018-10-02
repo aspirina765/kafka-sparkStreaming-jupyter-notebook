@@ -2,7 +2,7 @@
 
 This Dockerfile sets up a complete streaming environment for experimenting with Kafka, Spark streaming (PySpark) and jupyter. It installs
 
-* Kafka 0.10.2.1
+* Kafka
 * Spark 2.1.1 for Scala 2.11
 
 It additionnally installs
